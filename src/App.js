@@ -40,7 +40,9 @@ class App extends Component {
   };
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // Make a copy of the persons array instead of just having a reference/pointer to original array
+    // because we don't want to edit original array outside of setState
+    const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({
       persons: persons,
