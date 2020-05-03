@@ -9,6 +9,7 @@ class App extends Component {
       { name: "Marta", age: 29 },
       { name: "Calvin", age: 24 },
     ],
+    showPersons: false,
   };
 
   switchNameHandler = () => {
@@ -31,6 +32,13 @@ class App extends Component {
     });
   };
 
+  togglePersonsHandler = () => {
+    const showPersons = this.state.showPersons;
+    this.setState({
+      showPersons: !showPersons,
+    });
+  };
+
   style = {
     backgroundColor: "white",
     font: "inherit",
@@ -44,25 +52,32 @@ class App extends Component {
       <div className="App">
         <h1>Hello Everyone!</h1>
         <p>This is really working!</p>
+        <button style={this.style} onClick={this.togglePersonsHandler}>
+          Toggle Persons
+        </button>
         <button style={this.style} onClick={this.switchNameHandler}>
           Switch Name
         </button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, "Max!")}
-          change={this.changeNameHandler}
-        >
-          My hobby is sleeping :p
-        </Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
+        {this.state.showPersons ? (
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              click={this.switchNameHandler.bind(this, "Max!")}
+              change={this.changeNameHandler}
+            >
+              My hobby is sleeping :p
+            </Person>
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
