@@ -63,6 +63,14 @@ class App extends Component {
       cursor: "pointer",
     };
 
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
+    }
+
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -87,7 +95,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello Everyone!</h1>
-        <p>This is really working!</p>
+        <p className={classes.join(" ")}>This is really working!</p>
         <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
