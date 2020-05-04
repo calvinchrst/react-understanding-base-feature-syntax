@@ -53,15 +53,16 @@ class App extends Component {
     });
   };
 
-  style = {
-    backgroundColor: "white",
-    font: "inherit",
-    border: "1px solid blue",
-    padding: "8px",
-    cursor: "pointer",
-  };
-
   render() {
+    const style = {
+      backgroundColor: "green",
+      color: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer",
+    };
+
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -79,16 +80,18 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = "red";
     }
 
     return (
       <div className="App">
         <h1>Hello Everyone!</h1>
         <p>This is really working!</p>
-        <button style={this.style} onClick={this.togglePersonsHandler}>
+        <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
-        <button style={this.style} onClick={this.switchNameHandler}>
+        <button style={style} onClick={this.switchNameHandler}>
           Switch Name
         </button>
         {persons}
