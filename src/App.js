@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Radium from "radium";
+
 import "./App.css";
 import Person from "./Person/Person";
 
@@ -10,16 +12,6 @@ class App extends Component {
       { id: "apu79g", name: "Calvin", age: 24 },
     ],
     showPersons: false,
-  };
-
-  switchNameHandler = () => {
-    this.setState({
-      persons: [
-        { name: "Maximillian", age: 20 },
-        { name: "Marta", age: 29 },
-        { name: "Calvin", age: 25 },
-      ],
-    });
   };
 
   changeNameHandler = (event, id) => {
@@ -61,6 +53,10 @@ class App extends Component {
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black",
+      },
     };
 
     const classes = [];
@@ -90,6 +86,10 @@ class App extends Component {
       );
 
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "salmon",
+        color: "black",
+      };
     }
 
     return (
@@ -99,13 +99,10 @@ class App extends Component {
         <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
-        <button style={style} onClick={this.switchNameHandler}>
-          Switch Name
-        </button>
         {persons}
       </div>
     );
   }
 }
 
-export default App;
+export default Radium(App);
