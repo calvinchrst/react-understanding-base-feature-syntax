@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import Person from "./Person/Person";
 
-class Persons extends Component {
+class Persons extends PureComponent {
   state = {
     test: true,
   };
@@ -10,15 +10,6 @@ class Persons extends Component {
   static getDerivedStateFromProps(props, state) {
     console.log("[Persons.js] getDerivedStateFromProps");
     return state;
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log("[Persons.js] shouldComponentUpdate");
-    if (nextProps.persons !== this.props.persons) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
