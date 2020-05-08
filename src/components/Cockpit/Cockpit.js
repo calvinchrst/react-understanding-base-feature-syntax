@@ -30,7 +30,9 @@ const cockpit = (props) => {
       // This runs BEFORE the main useEffect function runs but AFTER the first render cycle
       console.log("[Cockpit.js] clean up work in 2nd useEffect");
     };
-  }, [props.nrOfPersons]);
+  }, []);
+
+  console.log("[Cockpit.js] Rendering...");
 
   const assignedClasses = [];
   if (props.nrOfPersons <= 2) {
@@ -56,4 +58,4 @@ const cockpit = (props) => {
   );
 };
 
-export default cockpit;
+export default React.memo(cockpit);
