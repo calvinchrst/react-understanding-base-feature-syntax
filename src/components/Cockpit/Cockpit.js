@@ -3,9 +3,18 @@ import React, { useEffect } from "react";
 import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
+  // We can have as many useEffect as we want
+  // The last argument in useEffect is the dependencies where if this dependency change, then only useEffect will be triggered again.
+  // An important use case of this is when you set No Dependencies => useEffect will only run once when this Cockpit is created
+
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
-  });
+
+    // Http request...
+    setTimeout(() => {
+      alert("Saved data to cloud!");
+    }, 1000);
+  }, []);
 
   const assignedClasses = [];
   if (props.nrOfPersons <= 2) {
