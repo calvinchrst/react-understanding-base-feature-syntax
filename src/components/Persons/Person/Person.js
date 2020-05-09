@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 import classes from "./Person.css";
-import Auxiliary from "../../../hoc/Auxiliary";
 
 class Person extends Component {
   render() {
     console.log("[Person.js] rendering...");
     return (
-      <Auxiliary>
+      <Fragment>
         <div className={classes.Person}>
           <p onClick={this.props.clicked}>
             I'm a {this.props.name} and I am {this.props.age} years old!
@@ -20,7 +19,7 @@ class Person extends Component {
           />
         </div>
         <div></div>
-      </Auxiliary>
+      </Fragment>
     );
   }
 }
