@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 
 import classes from "./Cockpit.css";
 import AuthContext from "../../context/auth-context";
 
 const cockpit = (props) => {
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);
 
   // We can have as many useEffect as we want
   // The last argument in useEffect is the dependencies where if this dependency change, then only useEffect clean up & useEffect will be triggered.
@@ -59,11 +60,7 @@ const cockpit = (props) => {
       <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
-      <AuthContext.Consumer>
-        {(context) => (
-          <button onClick={context.authenticateHandler}>Log in</button>
-        )}
-      </AuthContext.Consumer>
+      <button onClick={authContext.authenticateHandler}>Log in</button>
     </div>
   );
 };
