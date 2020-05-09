@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
+
   // We can have as many useEffect as we want
   // The last argument in useEffect is the dependencies where if this dependency change, then only useEffect clean up & useEffect will be triggered.
   // An important use case of this is when you set No Dependencies =>
@@ -12,10 +14,12 @@ const cockpit = (props) => {
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
 
-    // Http request...
-    setTimeout(() => {
-      alert("Saved data to cloud!");
-    }, 1000);
+    // // Http request...
+    // setTimeout(() => {
+    //   alert("Saved data to cloud!");
+    // }, 1000);
+
+    toggleBtnRef.current.click();
 
     return () => {
       // This runs BEFORE the main useEffect function runs but AFTER the first render cycle
@@ -51,7 +55,7 @@ const cockpit = (props) => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(" ")}>This is really working!</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
     </div>
